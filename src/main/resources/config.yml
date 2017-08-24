@@ -1,0 +1,6 @@
+actions:
+  IRON_NUGGET:
+    name: "&oItem"
+    potions:
+    - "15: INCREASE_DAMAGE: 300: 1: false: false"
+    - "32: FAST_DIGGING: 300"
