@@ -1,5 +1,5 @@
 actions:
-  IRON_NUGGET:
+  COOKED_BEEF:
     name: "&oItem"
     potions:
     - "15: INCREASE_DAMAGE: 300: 1: false: false"
