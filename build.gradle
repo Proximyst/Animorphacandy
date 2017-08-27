@@ -8,12 +8,10 @@ buildscript {
 }
 plugins {
     id 'com.github.johnrengelman.shadow' version '1.2.4'
+    id 'java'
+    id 'idea'
+    id 'io.franzbecker.gradle-lombok' version '1.10'
 }
-[
-        'idea',
-        'java',
-        'kotlin'
-].forEach { apply plugin: it }
 group 'com.proximyst'
 version '1.0-SNAPSHOT'
 
