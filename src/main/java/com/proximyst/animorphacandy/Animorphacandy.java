@@ -19,6 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.BiConsumer;
 
 public class Animorphacandy extends JavaPlugin {
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection") // Worthy bug reporting to Lombok plugin developer?
     @Getter private volatile Map<ItemStack, BiConsumer<Player, PlayerItemConsumeEvent>> actions = new HashMap<ItemStack, BiConsumer<Player, PlayerItemConsumeEvent>>() {
         @Override
         public BiConsumer<Player, PlayerItemConsumeEvent> get(Object key) {
@@ -72,7 +73,7 @@ public class Animorphacandy extends JavaPlugin {
                             split = new String[]{potionSerialized.substring(0, colon), potionSerialized.substring(colon)};
                         }
 
-                        int chance = 0;
+                        int chance;
                         try {
                             chance = Integer.parseInt(split[0].replace("%", ""));
                         } catch (NumberFormatException ignored) {
