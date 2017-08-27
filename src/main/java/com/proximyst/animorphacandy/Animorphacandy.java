@@ -3,6 +3,7 @@ package com.proximyst.animorphacandy;
 import com.google.common.collect.Sets;
 import com.proximyst.animorphacandy.event.ConsumeHandler;
 import lombok.Getter;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -119,7 +120,7 @@ public class Animorphacandy extends JavaPlugin {
                 ItemStack item = new ItemStack(type, 1, damage);
                 ItemMeta meta = item.getItemMeta();
                 if (name != null) {
-                    meta.setDisplayName(name);
+                    meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
                 }
                 //noinspection PointlessBooleanExpression -- Compiler optimises. It's for readability only.
                 meta.setUnbreakable(unbreakable | false);
