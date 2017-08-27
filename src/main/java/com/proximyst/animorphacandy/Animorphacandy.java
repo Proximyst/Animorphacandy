@@ -19,7 +19,18 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.BiConsumer;
 
 public class Animorphacandy extends JavaPlugin {
-    @Getter private volatile Map<ItemStack, BiConsumer<Player, PlayerItemConsumeEvent>> actions = new HashMap<>();
+    @Getter private volatile Map<ItemStack, BiConsumer<Player, PlayerItemConsumeEvent>> actions = new HashMap<ItemStack, BiConsumer<Player, PlayerItemConsumeEvent>>() {
+        @Override
+        public BiConsumer<Player, PlayerItemConsumeEvent> get(Object key) {
+            if (!(key instanceof ItemStack)) return null;
+            BiConsumer<Player, PlayerItemConsumeEvent> get = super.get(key);
+            if (get == null) {
+                Optional<Entry<ItemStack, BiConsumer<Player, PlayerItemConsumeEvent>>> optional = entrySet().stream().filter(entry -> entry.getKey().isSimilar((ItemStack) key)).findFirst();
+                if (optional.isPresent()) get = optional.get().getValue();
+            }
+            return get;
+        }
+    };
 
     @Override
     public void onEnable() {
